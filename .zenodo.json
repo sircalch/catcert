@@ -1,0 +1,23 @@
+{
+  "title": "CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs",
+  "description": "An open-source toolkit to audit DFT surface slab models, vacuum potential flatness, electrostatic dipole corrections, work functions, and surface energy convergence in heterogeneous catalysis calculations.",
+  "creators": [
+    {
+      "name": "Monreal-Hernández, Andre",
+      "affiliation": "Independent Researcher"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "keywords": [
+    "heterogeneous-catalysis",
+    "surface-science",
+    "dft",
+    "vasp",
+    "quantum-espresso",
+    "surface-energy",
+    "vacuum-thickness",
+    "dipole-correction",
+    "reproducibility"
+  ]
+}

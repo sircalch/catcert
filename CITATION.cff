@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it as below."
+authors:
+  - family-names: "Monreal-Hernández"
+    given-names: "Andre"
+    orcid: "https://orcid.org/0009-0000-0000-0000"
+title: "CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs"
+version: 1.0.0
+date-released: 2026-08-31
+license: MIT
+repository-code: "https://github.com/amonreal/catcert"
+keywords:
+  - "heterogeneous-catalysis"
+  - "surface-science"
+  - "dft"
+  - "vasp"
+  - "quantum-espresso"
+  - "surface-energy"
+  - "vacuum-thickness"
+  - "dipole-correction"
+  - "reproducibility"
