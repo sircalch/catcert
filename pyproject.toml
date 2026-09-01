@@ -8,9 +8,7 @@ version = "1.0.0"
 description = "Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs (VASP, Quantum ESPRESSO)"
 readme = "README.md"
 authors = [
-    { name = "Andrés Monreal-Hernández", email = "andres.monreal@ues.mx" },
-    { name = "Sara Lizbeth Franco-Amaya" },
-    { name = "Carlos Ivanhoe Martínez-Osorio" }
+    { name = "Andrés Monreal-Hernández", email = "andres.monreal@ues.mx" }
 ]
 license = { text = "MIT" }
 keywords = [
