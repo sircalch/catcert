@@ -3,8 +3,9 @@
   "description": "An open-source toolkit to audit DFT surface slab models, vacuum potential flatness, electrostatic dipole corrections, work functions, and surface energy convergence in heterogeneous catalysis calculations.",
   "creators": [
     {
-      "name": "Monreal-Hernández, Andre",
-      "affiliation": "Independent Researcher"
+      "name": "Monreal-Hernández, Andres",
+      "orcid": "0009-0009-1207-8597",
+      "affiliation": "Doctoral Research Group"
     }
   ],
   "access_right": "open",
