@@ -67,3 +67,7 @@ Documentation = "https://github.com/amonreal/catcert#readme"
 Repository = "https://github.com/amonreal/catcert.git"
 "Bug Tracker" = "https://github.com/amonreal/catcert/issues"
 Changelog = "https://github.com/amonreal/catcert/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["catcert*"]
+
