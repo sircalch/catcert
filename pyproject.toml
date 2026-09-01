@@ -1,4 +1,4 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
@@ -62,12 +62,13 @@ dev = [
 catcert = "catcert.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/amonreal/catcert"
-Documentation = "https://github.com/amonreal/catcert#readme"
-Repository = "https://github.com/amonreal/catcert.git"
-"Bug Tracker" = "https://github.com/amonreal/catcert/issues"
-Changelog = "https://github.com/amonreal/catcert/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/sircalch/catcert"
+Documentation = "https://github.com/sircalch/catcert#readme"
+Repository = "https://github.com/sircalch/catcert.git"
+"Bug Tracker" = "https://github.com/sircalch/catcert/issues"
+Changelog = "https://github.com/sircalch/catcert/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 include = ["catcert*"]
+
 

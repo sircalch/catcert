@@ -1,6 +1,6 @@
-# CatCert
+﻿# CatCert
 
-[![CI](https://github.com/amonreal/catcert/actions/workflows/test.yml/badge.svg)](https://github.com/amonreal/catcert/actions)
+[![CI](https://github.com/sircalch/catcert/actions/workflows/test.yml/badge.svg)](https://github.com/sircalch/catcert/actions)
 [![PyPI version](https://img.shields.io/pypi/v/catcert.svg?color=blue)](https://pypi.org/project/catcert/)
 [![Python versions](https://img.shields.io/pypi/pyversions/catcert.svg)](https://pypi.org/project/catcert/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -72,7 +72,7 @@ pip install catcert
 
 ### From Source
 ```bash
-git clone https://github.com/amonreal/catcert.git
+git clone https://github.com/sircalch/catcert.git
 cd catcert
 pip install -e .[dev]
 ```
@@ -147,7 +147,7 @@ If you use CatCert in your research, please cite:
   year = {2026},
   version = {1.0.0},
   publisher = {Zenodo},
-  url = {https://github.com/amonreal/catcert}
+  url = {https://github.com/sircalch/catcert}
 }
 ```
 
@@ -156,3 +156,4 @@ If you use CatCert in your research, please cite:
 ## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
