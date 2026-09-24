@@ -66,8 +66,10 @@ Surface slab modeling in VASP, Quantum ESPRESSO, and ASE requires rigorous conve
 ## Installation
 
 ### From PyPI
+> **Note:** PyPI release pending. Until then, install from the tagged GitHub release:
+
 ```bash
-pip install catcert
+pip install "git+https://github.com/sircalch/catcert@v1.0.0"
 ```
 
 ### From Source
