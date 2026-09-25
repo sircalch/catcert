@@ -26,7 +26,7 @@ def test_full_catcert_validation_pipeline():
 
     # Surface energy
     surf_res = calculate_surface_energy_convergence(
-        slab_energies_ev=[-60.0, -80.0, -100.0],
+        slab_energies_ev=[-55.0, -75.0, -95.0],  # 2*A*gamma = 5 eV -> gamma ≈ 1.60 J/m^2
         n_atoms_list=[12, 16, 20],
         layer_counts=[3, 4, 5],
         surface_area_ang2=25.0,

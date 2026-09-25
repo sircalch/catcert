@@ -61,3 +61,51 @@ def test_surface_energy_convergence_fail():
 
     assert res.is_converged is False
     assert res.status == "FAIL"
+
+
+def test_surface_energy_negative_gamma_fails():
+    # Slab energies below N*E_bulk give gamma < 0, which is non-physical.
+    res = calculate_surface_energy_convergence(
+        slab_energies_ev=[-31.0, -41.0, -51.0],
+        n_atoms_list=[3, 4, 5],
+        layer_counts=[3, 4, 5],
+        surface_area_ang2=25.0,
+        bulk_energy_per_atom_ev=-10.0,
+    )
+    assert res.converged_gamma_j_m2 < 0
+    assert res.status == "FAIL"
+
+
+def test_surface_energy_implausible_gamma_warns():
+    # 2*A*gamma = 20 eV over A = 25 Å^2 -> gamma ≈ 6.4 J/m^2, above the plausible range.
+    res = calculate_surface_energy_convergence(
+        slab_energies_ev=[-10.0, -20.0, -30.0],
+        n_atoms_list=[3, 4, 5],
+        layer_counts=[3, 4, 5],
+        surface_area_ang2=25.0,
+        bulk_energy_per_atom_ev=-10.0,
+    )
+    assert res.converged_gamma_j_m2 > 5.0
+    assert res.status == "WARNING"
+
+
+def test_single_slab_is_not_certified_as_converged():
+    res = calculate_surface_energy_convergence(
+        slab_energies_ev=[-45.0],
+        n_atoms_list=[5],
+        layer_counts=[5],
+        surface_area_ang2=25.0,
+        bulk_energy_per_atom_ev=-10.0,
+    )
+    assert res.status == "WARNING"
+    assert not res.is_converged
+
+
+def test_missing_bulk_reference_fails():
+    res = calculate_surface_energy_convergence(
+        slab_energies_ev=[-45.0, -55.0],
+        n_atoms_list=[5, 6],
+        layer_counts=[5, 6],
+        surface_area_ang2=25.0,
+    )
+    assert res.status == "FAIL"

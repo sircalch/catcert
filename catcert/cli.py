@@ -50,7 +50,7 @@ def run_demo(output_dir: str = "catcert_demo_output"):
     metadata = {
         "surface": "Pt(111) (p(2x2) 4-atom/layer slab)",
         "functional": "GGA-PBE-D3(BJ)",
-        "software": "VASP 6.4.2 (PAW-PBE, 450 eV, 6x6x1 Gamma-centered k-mesh)"
+        "software": "SYNTHETIC DEMO DATA (VASP-like settings: PAW-PBE, 450 eV, 6x6x1 k-mesh; not a real calculation)"
     }
 
     # 1. Surface energy convergence series (3, 4, 5, 6, 7 layers of Pt(111))
@@ -61,11 +61,11 @@ def run_demo(output_dir: str = "catcert_demo_output"):
     e_bulk_pt = -6.045
     # Simulated total energies converging
     slab_energies = [
-        -72.22,  # 3 layers: gamma ~ 1.55 J/m^2
-        -96.42,  # 4 layers: gamma ~ 1.52 J/m^2
-        -120.61, # 5 layers: gamma ~ 1.50 J/m^2
-        -144.79, # 6 layers: gamma ~ 1.50 J/m^2
-        -168.97  # 7 layers: gamma ~ 1.50 J/m^2
+        -67.200,  # 3 layers: gamma ~ 1.55 J/m^2
+        -91.483,  # 4 layers: gamma ~ 1.52 J/m^2
+        -115.732, # 5 layers: gamma ~ 1.50 J/m^2
+        -139.912, # 6 layers: gamma ~ 1.50 J/m^2
+        -164.092  # 7 layers: gamma ~ 1.50 J/m^2
     ]
 
     print("  -> Calculating surface energy gamma & layer convergence (Fiorentini-Methfessel regression)...")
@@ -112,11 +112,11 @@ def run_demo(output_dir: str = "catcert_demo_output"):
 
     # 4. Adsorption Energy (CO on Pt(111) atop site)
     print("  -> Calculating adsorption energy E_ads for CO* atop site (PBE-D3)...")
-    # Clean 5-layer Pt slab = -120.61 eV, gas CO = -14.80 eV, Pt(111)+CO = -137.06 eV
+    # Clean 5-layer Pt slab = -115.732 eV, gas CO = -14.80 eV, Pt(111)+CO = -132.182 eV
     ads_res = calculate_adsorption_energy(
         adsorbate_name="CO*",
-        e_slab_adsorbate_ev=-137.06,
-        e_clean_slab_ev=-120.61,
+        e_slab_adsorbate_ev=-132.182,
+        e_clean_slab_ev=-115.732,
         e_gas_ev=-14.80,
         zpe_correction_ev=0.12,
         dispersion_method="DFT-D3(BJ)"

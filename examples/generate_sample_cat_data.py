@@ -13,7 +13,7 @@ def generate_sample_cat_data(output_dir: str = "sample_surface_dataset"):
     # 1. Slab Layer Convergence CSV (Pt(111) 3 to 7 layers)
     layers = [3, 4, 5, 6, 7]
     atoms = [12, 16, 20, 24, 28]
-    energies = [-72.22, -96.42, -120.61, -144.79, -168.97]
+    energies = [-67.200, -91.483, -115.732, -139.912, -164.092]
     areas = [27.60] * 5
 
     df = pd.DataFrame({

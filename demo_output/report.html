@@ -105,7 +105,7 @@
         <header class="header">
             <div class="title-group">
                 <h1>CatCert Surface Slab & Catalysis Report</h1>
-                <p>Pt(111) (p(2x2) 4-atom/layer slab) &bull; GGA-PBE-D3(BJ) (VASP 6.4.2 (PAW-PBE, 450 eV, 6x6x1 Gamma-centered k-mesh))</p>
+                <p>Pt(111) (p(2x2) 4-atom/layer slab) &bull; GGA-PBE-D3(BJ) (SYNTHETIC DEMO DATA (VASP-like settings: PAW-PBE, 450 eV, 6x6x1 k-mesh; not a real calculation))</p>
             </div>
             <div>
                 <span class="status-badge badge-pass">
@@ -119,12 +119,12 @@
                 <div class="card-label">Surface Energy (&gamma;)</div>
                 <div class="card-value">
                     
-                    0.084 J/m&sup2;
+                    1.500 J/m&sup2;
                     
                 </div>
                 <div class="card-subtext">
                     
-                    5.3 meV/&Aring;&sup2; (&Delta;&gamma; = 0.0000 J/m&sup2;)
+                    93.6 meV/&Aring;&sup2; (&Delta;&gamma; = 0.0000 J/m&sup2;)
                     
                 </div>
             </div>
@@ -187,7 +187,7 @@
                     <td>&Delta;&gamma; = 0.0000 J/m&sup2;</td>
                     <td>&Delta;&gamma; &le; 0.015 J/m&sup2; (&le; 1 meV/&Aring;&sup2;)</td>
                     <td><span class="tag tag-pass">PASS</span></td>
-                    <td style="color: var(--text-secondary)">Surface energy well-converged with respect to slab thickness (|Delta gamma| = 0.0000 <= 0.015 J/m^2). Final gamma = 0.084 J/m^2.</td>
+                    <td style="color: var(--text-secondary)">Surface energy well-converged with respect to slab thickness (|Delta gamma| = 0.0000 <= 0.015 J/m^2). Final gamma = 1.500 J/m^2.</td>
                 </tr>
                 
                 
@@ -231,7 +231,7 @@
 
         <h2 class="section-title">Computational Methods (Publication Ready)</h2>
         <div class="box">
-            <pre id="methodsSnippet">Periodic surface slab calculations for Pt(111) (p(2x2) 4-atom/layer slab) were performed with VASP 6.4.2 (PAW-PBE, 450 eV, 6x6x1 Gamma-centered k-mesh) utilizing the GGA-PBE-D3(BJ) exchange-correlation functional. Slab thickness convergence, vacuum isolation, work functions, and electrostatic potential profiles were certified using CatCert v1.0.0 (Monreal-Hernández, 2026). Surface energy convergence as a function of slab thickness was audited using Fiorentini-Methfessel linear regression and pointwise layer differences (converged gamma = 0.084 J/m^2, Delta gamma = 0.0000 J/m^2). Periodic image interactions were decoupled with 16.0 Angstroms of vacuum spacing, confirming potential plateau flatness (Delta V_vac = 0.0335 eV, yielding a work function Phi = 5.70 eV). The surface model achieved an overall quality certification status of: PASS.
+            <pre id="methodsSnippet">Periodic surface slab calculations for Pt(111) (p(2x2) 4-atom/layer slab) were performed with SYNTHETIC DEMO DATA (VASP-like settings: PAW-PBE, 450 eV, 6x6x1 k-mesh; not a real calculation) utilizing the GGA-PBE-D3(BJ) exchange-correlation functional. Slab thickness convergence, vacuum isolation, work functions, and electrostatic potential profiles were certified using CatCert v1.0.0 (Monreal-Hernández, 2026). Surface energy convergence as a function of slab thickness was audited using Fiorentini-Methfessel linear regression and pointwise layer differences (converged gamma = 1.500 J/m^2, Delta gamma = 0.0000 J/m^2). Periodic image interactions were decoupled with 16.0 Angstroms of vacuum spacing, confirming potential plateau flatness (Delta V_vac = 0.0335 eV, yielding a work function Phi = 5.70 eV). The surface model achieved an overall quality certification status of: PASS.
 </pre>
             <button class="btn-copy" onclick="copyToClipboard('methodsSnippet')">Copy Methods Snippet</button>
         </div>
@@ -244,7 +244,7 @@
   year = {2026},
   version = {1.0.0},
   publisher = {Zenodo},
-  url = {https://github.com/amonreal/catcert}
+  url = {https://github.com/sircalch/catcert}
 }
 </pre>
             <button class="btn-copy" onclick="copyToClipboard('bibSnippet')">Copy BibTeX</button>

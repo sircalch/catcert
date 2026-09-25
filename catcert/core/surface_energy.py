@@ -9,6 +9,9 @@ import numpy as np
 # Physical constants
 EV_PER_ANG2_TO_J_PER_M2 = 16.02176634  # 1 eV/Å^2 = 16.02176634 J/m^2
 EV_TO_MEV = 1000.0
+# Typical range of surface energies for solid surfaces (soft/molecular crystals ~0.05, refractory metals ~4-5 J/m^2)
+GAMMA_PLAUSIBLE_MIN_J_M2 = 0.05
+GAMMA_PLAUSIBLE_MAX_J_M2 = 5.0
 
 
 @dataclass
@@ -129,10 +132,22 @@ def calculate_surface_energy_convergence(
     converged_gamma_mev = layer_points[-1].surface_energy_mev_ang2
 
     # 3. Decision
-    if n_slabs < 2:
-        is_conv = True
-        status = "PASS"
-        diag = f"Single slab thickness evaluated: gamma = {converged_gamma_j:.3f} J/m^2 ({converged_gamma_mev:.1f} meV/Å^2)."
+    if bulk_energy_per_atom_ev is None and fm_e_bulk is None:
+        is_conv = False
+        status = "FAIL"
+        diag = "No bulk reference energy available (provide bulk_energy_per_atom_ev or >= 3 slab thicknesses for the Fiorentini-Methfessel fit); surface energy is undefined."
+    elif converged_gamma_j <= 0.0:
+        is_conv = False
+        status = "FAIL"
+        diag = f"Non-physical surface energy (gamma = {converged_gamma_j:.3f} J/m^2 <= 0). Check the bulk reference energy and that slab/bulk use identical settings."
+    elif not (GAMMA_PLAUSIBLE_MIN_J_M2 <= converged_gamma_j <= GAMMA_PLAUSIBLE_MAX_J_M2):
+        is_conv = False
+        status = "WARNING"
+        diag = f"Surface energy gamma = {converged_gamma_j:.3f} J/m^2 lies outside the typical range for solid surfaces ({GAMMA_PLAUSIBLE_MIN_J_M2}-{GAMMA_PLAUSIBLE_MAX_J_M2} J/m^2). Verify the bulk reference, surface area, and symmetric/asymmetric slab factor."
+    elif n_slabs < 2:
+        is_conv = False
+        status = "WARNING"
+        diag = f"Single slab thickness evaluated: gamma = {converged_gamma_j:.3f} J/m^2 ({converged_gamma_mev:.1f} meV/Å^2). Layer convergence cannot be assessed from one thickness."
     elif final_delta <= convergence_threshold_j_m2:
         is_conv = True
         status = "PASS"
