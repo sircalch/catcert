@@ -7,6 +7,7 @@ authors:
     affiliation: "Universidad Estatal de Sonora"
 title: "CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs"
 version: 1.1.0
+doi: 10.5281/zenodo.22217584
 date-released: 2026-08-31
 license: MIT
 repository-code: "https://github.com/sircalch/catcert"
