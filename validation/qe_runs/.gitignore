@@ -1,0 +1,5 @@
+*
+!.gitignore
+!*.in
+!*.out
+!make_and_run.py

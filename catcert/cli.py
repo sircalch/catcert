@@ -172,6 +172,32 @@ def run_assess(args):
     ads_res = None
 
     # 1. Parse Slab Convergence CSV
+    if getattr(args, "qe_slabs", None):
+        slab_files = [f.strip() for f in args.qe_slabs.split(",") if f.strip()]
+        print(f"\n[CatCert] Parsing {len(slab_files)} Quantum ESPRESSO slab outputs...")
+        slabs = [parse_qe_output(f) for f in slab_files]
+        bad = [f for f, d in zip(slab_files, slabs) if d["final_energy_ev"] is None or not d["n_atoms"]]
+        if bad:
+            print(f"[Error] No converged total energy / atom count in: {', '.join(bad)}", file=sys.stderr)
+            sys.exit(1)
+        slabs = sorted(slabs, key=lambda d: d["n_atoms"])
+        n_list = [d["n_atoms"] for d in slabs]
+        per_layer = args.atoms_per_layer or int(np.gcd.reduce(np.array(n_list)))
+        e_bulk = float(args.e_bulk) if args.e_bulk is not None else None
+        if getattr(args, "qe_bulk", None):
+            b = parse_qe_output(args.qe_bulk)
+            e_bulk = b["final_energy_ev"] / b["n_atoms"]
+            print(f"  -> Bulk reference: {e_bulk:.6f} eV/atom from {args.qe_bulk}")
+        area = args.area or slabs[0]["surface_area_ang2"]
+        print(f"  -> Layers {[n // per_layer for n in n_list]}, area {area:.4f} A^2 from the pw.x cell")
+        surf_res = calculate_surface_energy_convergence(
+            slab_energies_ev=[d["final_energy_ev"] for d in slabs],
+            n_atoms_list=n_list,
+            layer_counts=[n // per_layer for n in n_list],
+            surface_area_ang2=float(area),
+            bulk_energy_per_atom_ev=e_bulk,
+            is_symmetric=not args.asymmetric
+        )
     if args.layers_csv:
         print(f"\n[CatCert] Parsing layer convergence CSV from: {args.layers_csv}...")
         c_data = parse_slab_convergence_csv(args.layers_csv)
@@ -259,13 +285,13 @@ def print_citation():
   author = {Monreal-Hern\\'andez, Andre},
   title = {{CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs}},
   year = {2026},
-  version = {1.0.0},
+  version = {1.1.0},
   publisher = {Zenodo},
   url = {https://github.com/sircalch/catcert}
 }"""
     print("\nIf you use CatCert in your publications, please cite:\n")
     print("APA Style:")
-    print("Monreal-Hernández, A. (2026). CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs (v1.0.0). Zenodo. https://github.com/sircalch/catcert\n")
+    print("Monreal-Hernández, A. (2026). CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs (v1.1.0). Zenodo. https://github.com/sircalch/catcert\n")
     print("BibTeX:")
     print(bib)
     print()
@@ -284,6 +310,9 @@ def main():
     assess_parser = subparsers.add_parser("assess", help="Assess slab thickness convergence, potential profile, or adsorption")
     assess_parser.add_argument("--layers-csv", default=None, help="Path to slab layer convergence CSV (layers, energy, n_atoms)")
     assess_parser.add_argument("--area", type=float, default=None, help="Surface cross-sectional area (A = |a x b|) in Å^2")
+    assess_parser.add_argument("--qe-slabs", default=None, help="Comma-separated pw.x outputs of slabs of increasing thickness")
+    assess_parser.add_argument("--qe-bulk", default=None, help="pw.x output of the bulk reference (energy per atom)")
+    assess_parser.add_argument("--atoms-per-layer", type=int, default=None, help="Atoms per layer (default: gcd of slab atom counts)")
     assess_parser.add_argument("--e-bulk", type=float, default=None, help="Bulk reference energy per atom (eV)")
     assess_parser.add_argument("--asymmetric", action="store_true", help="Flag if slab is asymmetric (factor 1 instead of 2)")
     assess_parser.add_argument("--potential", default=None, help="Path to 1D planar average potential file (z, V)")

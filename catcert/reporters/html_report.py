@@ -275,7 +275,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
 
         <footer>
-            Generated automatically by <strong>CatCert v1.0.0</strong> &bull; Heterogeneous Catalysis & DFT Surface Slab Certification &bull; Monreal-Hernández, 2026.
+            Generated automatically by <strong>CatCert v1.1.0</strong> &bull; Heterogeneous Catalysis & DFT Surface Slab Certification &bull; Monreal-Hernández, 2026.
         </footer>
     </div>
 

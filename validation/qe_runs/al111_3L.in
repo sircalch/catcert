@@ -1,0 +1,30 @@
+&control
+  calculation = 'scf'
+  prefix = 'al111_3L'
+  pseudo_dir = '/home/andres/pseudo/SSSP_1.3.0_PBE_efficiency'
+  outdir = './tmp_3L'
+/
+&system
+  ibrav = 4
+  A = 2.85671140
+  C = 19.66499018
+  nat = 3
+  ntyp = 1
+  ecutwfc = 30.0
+  ecutrho = 240.0
+  occupations = 'smearing'
+  smearing = 'mv'
+  degauss = 0.02
+/
+&electrons
+  conv_thr = 1.0d-9
+  mixing_beta = 0.3
+/
+ATOMIC_SPECIES
+  Al 26.9815 Al.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS crystal
+  Al 0.0000000000 0.0000000000 0.0000000000
+  Al 0.3333333333 0.6666666667 0.1186115562
+  Al 0.6666666667 0.3333333333 0.2372231124
+K_POINTS automatic
+  16 16 1 0 0 0

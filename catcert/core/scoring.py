@@ -98,7 +98,7 @@ def assess_slab_quality(
         recommendations=recommendations,
         provenance={
             "tool": "CatCert",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "citation": "Monreal-Hernández, A. (2026). CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs."
         }
     )
