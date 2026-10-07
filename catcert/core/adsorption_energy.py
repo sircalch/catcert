@@ -4,6 +4,7 @@ Adsorption energy calculation, zero-point energy (ZPE) correction, and dispersio
 
 from typing import List, Dict, Any, Optional, Tuple
 from dataclasses import dataclass
+import re
 import numpy as np
 
 
@@ -24,6 +25,14 @@ class AdsorptionEnergyResult:
 
 
 EV_TO_KCAL_MOL = 23.06054887
+# canonical keys (lower case) of van der Waals treatments that pw.x and VASP can run
+RECOGNISED_DISPERSION = {"grimmed2", "d2", "dftd2", "grimmed3", "d3", "dftd3", "d3bj", "dftd3bj",
+                         "tkatchenkoscheffler", "ts", "xdm", "vdwdf", "vdwdf2", "rvv10"}
+
+
+def _dispersion_key(name: Optional[str]) -> str:
+    """Lower-case key with spaces, hyphens and brackets removed: 'DFT-D3(BJ)' -> 'dftd3bj'."""
+    return re.sub(r"[\s()\-_]", "", (name or "").lower())
 
 
 def calculate_adsorption_energy(
@@ -62,18 +71,23 @@ def calculate_adsorption_energy(
     if zpe_correction_ev is not None:
         e_ads_zpe = float(e_ads_ev + zpe_correction_ev)
 
-    is_disp = False
-    if dispersion_method and dispersion_method.lower() not in ["none", "false", "no", ""]:
-        is_disp = True
-
-    # Audit logic
-    if not is_disp:
+    # Only a method on the list below counts as a dispersion treatment, and only when it was read from the
+    # calculation (parse_qe_dispersion) or given explicitly; any other text is reported as unrecognised.
+    key = _dispersion_key(dispersion_method)
+    is_disp = key in RECOGNISED_DISPERSION
+    e_txt = f"E_ads = {e_ads_ev:.3f} eV / {e_ads_kcal:.2f} kcal/mol"
+    if not key or key in ("none", "false", "no"):
         status = "WARNING"
-        diag = f"Adsorption energy calculated without dispersion correction (E_ads = {e_ads_ev:.3f} eV / {e_ads_kcal:.2f} kcal/mol). GGA functionals without vdW typically underbind physisorbed and weakly chemisorbed species by 0.2-0.6 eV."
+        diag = (f"Adsorption energy without a van der Waals correction ({e_txt}). GGA functionals without vdW "
+                f"typically underbind physisorbed and weakly chemisorbed species.")
+    elif not is_disp:
+        status = "WARNING"
+        diag = (f"Dispersion setting '{dispersion_method}' is not a recognised method (accepted: "
+                f"{', '.join(sorted(RECOGNISED_DISPERSION))}); the adsorption energy ({e_txt}) cannot be "
+                f"attributed to a dispersion treatment.")
     else:
         status = "PASS"
-        disp_str = f"with {dispersion_method}"
-        diag = f"Adsorption energy rigorously evaluated {disp_str} (E_ads = {e_ads_ev:.3f} eV / {e_ads_kcal:.2f} kcal/mol)."
+        diag = f"Adsorption energy with {dispersion_method} dispersion ({e_txt})."
 
     return AdsorptionEnergyResult(
         adsorbate_name=adsorbate_name,
