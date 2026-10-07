@@ -66,10 +66,12 @@ Surface slab modeling in VASP, Quantum ESPRESSO, and ASE requires rigorous conve
 ## Installation
 
 ### From PyPI
+> **Correction (1.2.0):** the Al(111) surface energy of 0.858 J/m^2 quoted in the 1.1.0 development notes was computed against an unconverged bulk reference and is withdrawn. See CHANGELOG.md.
+>
 > **Note:** PyPI release pending. Until then, install from the tagged GitHub release:
 
 ```bash
-pip install "git+https://github.com/sircalch/catcert@v1.0.0"
+pip install "git+https://github.com/sircalch/catcert@v1.2.0"
 ```
 
 ### From Source
