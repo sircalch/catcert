@@ -4,6 +4,7 @@ Interactive HTML report dashboard generator for CatCert.
 
 import os
 import jinja2
+from catcert import __version__
 from catcert.core.scoring import SlabQualityReport
 
 HTML_TEMPLATE = """<!DOCTYPE html>
@@ -275,7 +276,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
 
         <footer>
-            Generated automatically by <strong>CatCert v1.1.0</strong> &bull; Heterogeneous Catalysis & DFT Surface Slab Certification &bull; Monreal-Hernández, 2026.
+            Generated automatically by <strong>CatCert v{{ version }}</strong> &bull; Heterogeneous Catalysis & DFT Surface Slab Certification &bull; Monreal-Hernández, 2026.
         </footer>
     </div>
 
@@ -307,7 +308,8 @@ def generate_catcert_html_report(
     rendered = template.render(
         report=report,
         methods_text=methods_text,
-        citation_bib=citation_bib
+        citation_bib=citation_bib,
+        version=__version__
     )
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(rendered)

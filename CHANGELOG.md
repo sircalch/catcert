@@ -1,6 +1,35 @@
 # Changelog
 
-## 1.1.0 (unreleased)
+## 1.2.0 (2026-10-07)
+
+### Correction
+- **The Al(111) surface energy of 0.858 J/m^2 in 1.1.0 is withdrawn.** It was computed against a bulk energy from a
+  16x16x16 k-mesh, which is not converged (bulk energy per atom: 16^3 -537.4673, 24^3 -537.4612, 32^3 -537.4622 eV;
+  the 16^3 value was off by about 8 meV). With the converged bulk (32^3), the pointwise surface energies of 3-7
+  layers are 0.788, 0.846, 0.835, 0.823 and 0.818 J/m^2: no plateau, and the 6-to-7-layer change is 0.0055 J/m^2,
+  not 0.0002. The Fiorentini-Methfessel fit gives 0.804 J/m^2. The claim "converges to 0.858 J/m^2" should not be
+  used. Release 1.1.0 was not published (no GitHub release, no Zenodo record); this entry corrects its commit history.
+- **The convergence test cannot detect this kind of drift.** The layer-to-layer check (threshold 0.015 J/m^2)
+  accepts a monotone drift of a few hundredths of a J/m^2 per layer. A plateau has to be shown explicitly; the
+  package does not yet do that. Slab-side k-point and smearing convergence is not tested.
+
+### Fixed
+- **Dispersion was recognised from any text.** `calculate_adsorption_energy` returned PASS ("rigorously evaluated")
+  for any non-empty dispersion label, e.g. 'xyz'. Only recognised methods (names normalised: 'DFT-D3(BJ)' -> 'd3bj')
+  now pass; anything else gives WARNING.
+- **Functional and van der Waals treatment are read from the pw.x output** (`parse_qe_dispersion`), not typed in.
+- **Wording.** Reports say "checked", not "certified"; the version and citation come from `catcert.__version__`.
+
+### Validation
+- `validation/ase_emt_check.py`: the surface-energy bookkeeping (areas, factor 2, thickness fit) agrees with ASE
+  to machine precision for Al(111) slabs with the EMT potential. This tests conventions only: EMT slabs have the same
+  energy per layer at every thickness, so it cannot test convergence.
+- `validation/qe_runs/kconv/`: bulk fcc Al at 16^3, 24^3 and 32^3 (Quantum ESPRESSO 7.5, PBE, SSSP 1.3.0).
+
+### Not validated
+- The slab series: its thickness and k-mesh convergence are open. The VASP parsers are not validated.
+
+## 1.1.0 (committed, never released; see the correction in 1.2.0)
 
 ### Fixed
 - **Demo data and plausibility checks.** The demo Pt(111) slab energies gave γ = 0.084 J/m², 18 times below

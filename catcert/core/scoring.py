@@ -6,6 +6,8 @@ from typing import Dict, Any, Optional, List
 from dataclasses import dataclass, asdict
 import numpy as np
 
+from catcert import __version__
+
 from catcert.core.surface_energy import SurfaceEnergyResult, calculate_surface_energy_convergence
 from catcert.core.vacuum_potential import VacuumPotentialResult, calculate_vacuum_potential_profile
 from catcert.core.dipole_correction import DipoleAuditResult, calculate_dipole_correction_audit
@@ -98,7 +100,7 @@ def assess_slab_quality(
         recommendations=recommendations,
         provenance={
             "tool": "CatCert",
-            "version": "1.1.0",
+            "version": __version__,
             "citation": "Monreal-Hernández, A. (2026). CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs."
         }
     )

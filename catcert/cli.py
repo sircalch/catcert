@@ -1,4 +1,4 @@
-﻿"""
+"""
 Command Line Interface (CLI) for CatCert.
 """
 
@@ -285,13 +285,13 @@ def print_citation():
   author = {Monreal-Hern\\'andez, Andre},
   title = {{CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs}},
   year = {2026},
-  version = {1.1.0},
+  version = {1.2.0},
   publisher = {Zenodo},
   url = {https://github.com/sircalch/catcert}
 }"""
     print("\nIf you use CatCert in your publications, please cite:\n")
     print("APA Style:")
-    print("Monreal-Hernández, A. (2026). CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs (v1.1.0). Zenodo. https://github.com/sircalch/catcert\n")
+    print("Monreal-Hernández, A. (2026). CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs (v1.2.0). Zenodo. https://github.com/sircalch/catcert\n")
     print("BibTeX:")
     print(bib)
     print()
