@@ -1,0 +1,32 @@
+&control
+  calculation = 'scf'
+  prefix = 'H2boxd3'
+  pseudo_dir = '/home/andres/pseudo/SSSP_1.3.0_PBE_efficiency'
+  outdir = './tmp_H2boxd3'
+/
+&system
+  ibrav = 0
+  nat = 2
+  ntyp = 1
+  ecutwfc = 30.0
+  ecutrho = 240.0
+  occupations = 'smearing'
+  smearing = 'mv'
+  degauss = 0.02
+  vdw_corr = 'grimme-d3'
+/
+&electrons
+  conv_thr = 1.0d-7
+  mixing_beta = 0.2
+/
+ATOMIC_SPECIES
+  H 1.00794 H.pbe-rrkjus_psl.1.0.0.UPF
+CELL_PARAMETERS angstrom
+  10.00000000 0.00000000 0.00000000
+  0.00000000 10.00000000 0.00000000
+  0.00000000 0.00000000 10.00000000
+ATOMIC_POSITIONS angstrom
+  H 5.00000000 5.00000000 5.36858300
+  H 5.00000000 5.00000000 4.63141700
+K_POINTS automatic
+  1 1 1 0 0 0
