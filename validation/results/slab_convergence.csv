@@ -1,0 +1,17 @@
+series,layers,extra_vacuum_A,energy_eV,gamma_J_m2,qe_conv_thr_Ry,file
+thickness,3,0,-1611.6914235015915,0.7881411293742648,1e-9,validation/qe_runs/al111_3L.out
+thickness,4,0,-2149.1025541232952,0.8460830806006091,1e-9,validation/qe_runs/al111_4L.out
+thickness,5,0,-2686.574355796001,0.835255052005708,1e-9,validation/qe_runs/al111_5L.out
+thickness,6,0,-3224.047201025369,0.8232441632252907,1e-9,validation/qe_runs/al111_6L.out
+thickness,7,0,-3761.5143585307837,0.8176802480023541,1e-9,validation/qe_runs/al111_7L.out
+thickness,9,0,-4836.45771915063,0.7962993176139959,1e-9,validation/qe_runs/conv/al111_9L.out
+thickness,11,0,-5911.333516075338,0.8515011045937304,1e-9,validation/qe_runs/conv/al111_11L.out
+vacuum,7,4,-3761.51435648993,0.8176825612880702,1e-9,validation/qe_runs/conv/al111_7L_vac4.out
+vacuum,7,8,-3761.514357442328,0.8176814817549077,1e-9,validation/qe_runs/conv/al111_7L_vac8.out
+vacuum,9,4,-4836.457718334288,0.7963002429282824,1e-9,validation/qe_runs/conv/al111_9L_vac4.out
+vacuum,9,8,-4836.457717109775,0.7963016309002275,1e-9,validation/qe_runs/conv/al111_9L_vac8.out
+vacuum,11,4,-5911.333507231637,0.8515111288330361,1e-6,validation/qe_runs/conv/al111_11L_vac4c.out
+vacuum,11,8,-5911.333516347451,0.8515007961559784,1e-8,validation/qe_runs/conv/al111_11L_vac8b.out
+kmesh_5L,5,0,-2686.574355796001,0.835255052005708,1e-9,validation/qe_runs/al111_5L.out
+kmesh_5L,5,0,-2686.5694157048847,0.8408545918317656,1e-9,validation/qe_runs/conv/al111_5L_k24.out
+kmesh_5L,5,0,-2686.569279511897,0.8410089651095504,1e-9,validation/qe_runs/conv/al111_5L_k32.out

@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Slab convergence tests (validation/results/slab_convergence.csv)
+- Surface energy of unrelaxed Al(111) with the converged bulk reference (32x32x32), PBE, 30/240 Ry:
+  thickness 3-11 layers gives 0.788, 0.846, 0.835, 0.823, 0.818, 0.796, 0.852 J/m^2 (no plateau).
+- Vacuum (+4 and +8 A) changes nothing at 7, 9 or 11 layers (to 0.0001 J/m^2): the spread is not a cell-height effect.
+- In-plane k-mesh of the 5-layer slab: 16x16 0.8353, 24x24 0.8409, 32x32 0.8410 J/m^2; 16x16 is within 0.006 J/m^2.
+- Two 11-layer runs did not converge the SCF at 1e-9 Ry; they were rerun at 1e-8 and 1e-6 Ry (energies agree to 0.3 meV).
+- Not yet tested: smearing, relaxation, and the choice of fit. No converged surface energy is quoted.
+
 ## 1.2.0 (2026-10-07)
 
 ### Correction
