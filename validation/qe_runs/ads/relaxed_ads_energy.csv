@@ -1,0 +1,3 @@
+functional,geometry,E_ads_eV,total_force_clean_Ry_bohr,total_force_H_Ry_bohr,zpe
+PBE,relaxed (bottom 2 Al layers fixed),0.2297,0.001317,0.000811,not included
+PBE+D3,relaxed (bottom 2 Al layers fixed),0.1787,0.001042,0.002190,not included
