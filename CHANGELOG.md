@@ -15,7 +15,7 @@
 ### Correction
 - **The Al(111) surface energy of 0.858 J/m^2 in 1.1.0 is withdrawn.** It was computed against a bulk energy from a
   16x16x16 k-mesh, which is not converged (bulk energy per atom: 16^3 -537.4673, 24^3 -537.4612, 32^3 -537.4622 eV;
-  the 16^3 value was off by about 8 meV). With the converged bulk (32^3), the pointwise surface energies of 3-7
+  the 16^3 value was off by about 5 meV). With the converged bulk (32^3), the pointwise surface energies of 3-7
   layers are 0.788, 0.846, 0.835, 0.823 and 0.818 J/m^2: no plateau, and the 6-to-7-layer change is 0.0055 J/m^2,
   not 0.0002. The Fiorentini-Methfessel fit gives 0.804 J/m^2. The claim "converges to 0.858 J/m^2" should not be
   used. Release 1.1.0 was not published (no GitHub release, no Zenodo record); this entry corrects its commit history.
