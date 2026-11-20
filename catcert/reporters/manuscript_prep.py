@@ -2,6 +2,7 @@
 Manuscript Methods snippet, summary tables (CSV, LaTeX), and BibTeX citations for CatCert.
 """
 
+from catcert import __version__
 from typing import Dict, Any, Optional
 import os
 import pandas as pd
@@ -95,7 +96,7 @@ def generate_catcert_manuscript_assets(
 
     full_methods = (
         f"Periodic surface slab calculations for {surf_str} were performed with {dft_str} utilizing the {func_str} exchange-correlation functional. "
-        f"Slab thickness convergence, vacuum isolation, work functions, and electrostatic potential profiles were checked using CatCert v1.2.0 (Monreal-Hernández, 2026). "
+        f"Slab thickness convergence, vacuum isolation, work functions, and electrostatic potential profiles were checked using CatCert v{__version__} (Monreal-Hernández, 2026). "
         f"{se_str}{vac_str}{dip_str}"
         f"The surface model achieved an overall quality certification status of: {report.overall_status}."
     )
@@ -107,10 +108,10 @@ def generate_catcert_manuscript_assets(
     # 3. BibTeX
     bib_path = os.path.join(output_dir, "citation.bib")
     bib_content = """@software{monreal2026catcert,
-  author = {Monreal-Hern\\'andez, Andre},
+  author = {Monreal-Hernández, Andrés},
   title = {{CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs}},
   year = {2026},
-  version = {1.2.0},
+  version = {""" + __version__ + """},
   publisher = {Zenodo},
   url = {https://github.com/sircalch/catcert}
 }
