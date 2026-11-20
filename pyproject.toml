@@ -56,16 +56,21 @@ dev = [
     "build>=0.10.0",
     "twine>=4.0.0"
 ]
+docs = [
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.26"
+]
 
 [project.scripts]
 catcert = "catcert.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/sircalch/catcert"
-Documentation = "https://github.com/sircalch/catcert#readme"
+Documentation = "https://sircalch.github.io/catcert/"
 Repository = "https://github.com/sircalch/catcert.git"
 "Bug Tracker" = "https://github.com/sircalch/catcert/issues"
-Changelog = "https://github.com/sircalch/catcert/blob/main/CHANGELOG.md"
+Changelog = "https://github.com/sircalch/catcert/blob/master/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 include = ["catcert*"]

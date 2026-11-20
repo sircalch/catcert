@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Added
+- Documentation site with installation, API reference and citation guidance: <https://sircalch.github.io/catcert/>.
+- Support and governance statement in `CONTRIBUTING.md`; `CODE_OF_CONDUCT.md` and `SECURITY.md`; README links to all of them.
+
+### Fixed
+- The "Changelog" project URL pointed to a `main` branch that does not exist; it now points to `master`.
+
 ### Slab convergence tests (validation/results/slab_convergence.csv)
 - Surface energy of unrelaxed Al(111) with the converged bulk reference (32x32x32), PBE, 30/240 Ry:
   thickness 3-11 layers gives 0.788, 0.846, 0.835, 0.823, 0.818, 0.796, 0.852 J/m^2 (no plateau).
