@@ -3,7 +3,7 @@ CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction,
 and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs.
 """
 
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 __author__ = "Andrés Monreal-Hernández"
 __license__ = "MIT"
 
