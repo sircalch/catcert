@@ -2,13 +2,13 @@
 
 If CatCert helps your research, please cite it. The repository's [`CITATION.cff`](https://github.com/sircalch/catcert/blob/master/CITATION.cff) is the canonical record; GitHub's "Cite this repository" button uses it.
 
-Version 1.2.1 (2026-11-20) is archived on Zenodo with the DOI [10.5281/zenodo.22217584](https://doi.org/10.5281/zenodo.22217584).
+Version 1.2.2 (2026-11-20) is archived on Zenodo with the DOI [10.5281/zenodo.22217584](https://doi.org/10.5281/zenodo.22217584).
 
 ```bibtex
-@software{catcert_1_2_1,
+@software{catcert_1_2_2,
   author  = {Monreal-Hernández, Andrés},
   title   = {CatCert},
-  version = {1.2.1},
+  version = {1.2.2},
   year    = {2026},
   doi     = {10.5281/zenodo.22217584},
   url     = {https://github.com/sircalch/catcert}

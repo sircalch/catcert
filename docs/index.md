@@ -143,7 +143,7 @@ If you use CatCert in your research, please cite:
   author = {Monreal-Hernández, Andrés},
   title = {{CatCert: Automated Quality-Control, Vacuum Thickness, Dipole Correction, and Surface Energy Convergence Certification for Heterogeneous Catalysis & DFT Surface Slabs}},
   year = {2026},
-  version = {1.2.1},
+  version = {1.2.2},
   publisher = {Zenodo},
   url = {https://github.com/sircalch/catcert}
 }
